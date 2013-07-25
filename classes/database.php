@@ -46,4 +46,10 @@ function get_all($sql){
 		;
 	}
 	return $result;
+}function get_first($sql){
+	$q = mysql_query($sql) or exit(mysql_error());
+	while (($result[] = mysql_fetch_assoc($q)) || array_pop($result)){
+		;
+	}
+	return mysql_num_rows($q) ? $result[0] : null;
 }
