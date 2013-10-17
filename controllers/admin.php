@@ -5,6 +5,11 @@ class admin {
 	function index(){
 		global $request;
 		require 'classes/tag.php';
+		require 'classes/post.php';
+		$param = $request->get[0];
+		if ($param == delete){
+			post::delete($request->get[1]);
+		}
 
 		$posts = get_all("SELECT *, count(comment_id) AS comment_count FROM post NATURAL JOIN user NATURAL JOIN comment GROUP BY post_id");
 		$tags = tag::get_tags();

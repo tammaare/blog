@@ -12,14 +12,14 @@ class posts {
 	}
 	function view(){
 		global $request;
-		require'classes/comment.php';
-		if (isset($request->post['comment_text'])){
-			if(empty($request->post['comment_author'])){
-				$request->post['comment_author'] = 'Anonüümne';
-			}
-			if(!empty($request->post['comment_text'])){
-				comment::add();
-			}
+			require 'classes/comment.php';
+			if (isset($request->post['comment_text'])){
+				if(empty($request->post['comment_author'])){
+					$request->post['comment_author'] = 'Anonüümne';
+				}
+				if(!empty($request->post['comment_text'])){
+					comment::add();
+				}
 		}
 		$id = $request->get[0];
 		$post = get_first("SELECT * FROM post WHERE post_id='$id'" );
